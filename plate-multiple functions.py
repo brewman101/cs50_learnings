@@ -1,7 +1,8 @@
-
+import string
+exlcusions=string.punctuation + " "
 
 def main():
-    plate="12RC"
+    plate="RC12"
     # plate = input("Plate: ")
     if is_valid(plate):
         print("Valid")
@@ -15,12 +16,14 @@ def is_valid(s):
         return False
     elif check_firstTwo(s) is False:
         return False
+    elif punctuation(s) is False:
+        return False    
     else:
         return True
 
-# Check the length
+# Check the length is between 2 and 6 characters
 def check_length(plate):
-    if len(plate) < 7:
+    if len(plate) < 7 and len(plate) >1:
         return True
     else:
         return False
@@ -32,6 +35,14 @@ def check_firstTwo(plate):
         return True
     else:
         return False
+
+# Check for periods, spaces or punctuation
+def punctuation(p):
+    if any(char in exlcusions for char in p):
+        return False
+    else:
+        return True
+
 
 main()
 
