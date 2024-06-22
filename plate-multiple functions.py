@@ -2,8 +2,7 @@ import string
 exlcusions=string.punctuation + " "
 
 def main():
-    plate="RC12"
-    # plate = input("Plate: ")
+    plate = input("Plate: ")
     if is_valid(plate):
         print("Valid")
     else:
@@ -20,20 +19,22 @@ def is_valid(s):
         return False
     elif no_zero(s) is False:
         return False
+    elif no_num_letter(s) is False:
+        return False
     else:
         return True
 
 # Check the length is between 2 and 6 characters
-def check_length(plate):
-    if len(plate) < 7 and len(plate) >1:
+def check_length(c):
+    if len(c) < 7 and len(c) >1:
         return True
     else:
         return False
 
 # Check the first two characters are letters
-def check_firstTwo(plate):
+def check_firstTwo(two):
     # check for valid
-    if (plate[0:2]).isalpha() is True:
+    if (two[0:2]).isalpha() is True:
         return True
     else:
         return False
@@ -46,18 +47,21 @@ def punctuation(p):
         return True
 
 # First number can't be 0
-def no_zero(p):
+def no_zero(r):
     # Loop to find first number
-    for _ in range(len(p)):
+    for _ in range(len(r)):
         # If first number is 0 return False (aka invalid)
-        if (p[_]).isnumeric() is True and p[_]=="0":
+        if (r[_]).isnumeric() is True and r[_]=="0":
             return False
         # If first number is 0 return True (aka valid)
-        elif (p[_]).isnumeric() is True and p[_]!="0":
+        elif (r[_]).isnumeric() is True and r[_]!="0":
             return True
             
-
+# No number then letter at the end
+def no_num_letter(z):
+    if (z[-2]).isalpha() is True and (z[-1]).isnumeric() is True:
+        return False
+    else:
+        return True
 
 main()
-
-#check_firstTwo("19hnd")
