@@ -17,7 +17,9 @@ def is_valid(s):
     elif check_firstTwo(s) is False:
         return False
     elif punctuation(s) is False:
-        return False    
+        return False
+    elif no_zero(s) is False:
+        return False
     else:
         return True
 
@@ -42,6 +44,18 @@ def punctuation(p):
         return False
     else:
         return True
+
+# First number can't be 0
+def no_zero(p):
+    # Loop to find first number
+    for _ in range(len(p)):
+        # If first number is 0 return False (aka invalid)
+        if (p[_]).isnumeric() is True and p[_]=="0":
+            return False
+        # If first number is 0 return True (aka valid)
+        elif (p[_]).isnumeric() is True and p[_]!="0":
+            return True
+            
 
 
 main()
