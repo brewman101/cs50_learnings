@@ -1,6 +1,6 @@
 
 def main():
-    number= get_number()
+    number=get_number()
     woof(number)
 
 
