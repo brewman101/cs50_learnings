@@ -41,8 +41,8 @@ while True:
         if choice==opponent_choice:
             print("It's a tie!")
         elif opponent_choice==1:
-            print("Paper beats Rock, you win!  :) ")
+            print("Rock beats Scissors, you lose!  :(")
         elif opponent_choice==2:
-            print("Scissors beats Paper, you lose!")
+            print("Scissors beats Paper, you win!")
     resume=input("")
 print("Thanks for playing")
