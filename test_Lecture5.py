@@ -21,3 +21,5 @@ def test_Lecture5():
 
 if __name__ =="__main__":
     main()
+
+assert square(3)==9
