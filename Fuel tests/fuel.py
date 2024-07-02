@@ -1,8 +1,9 @@
 import sys
 
 def main():
-    fuel=gauge(input("Fraction "))
-    print(fuel)
+        fuel=gauge(input("Fraction: "))
+        print(fuel)
+
 
 def convert(fraction):
     try:
@@ -10,12 +11,14 @@ def convert(fraction):
         a=int(a)
         b=int(b)
         if a>b:
-            pass
+            main()
+        elif b==0:
+            main()
         else:
             fraction=(a/b)*100
             fraction=round(fraction)
     except ValueError:
-        sys.exit("Value Error")
+        main()
     if fraction==0 or fraction==1:
         return("E")
     elif fraction==100 or fraction==99:
