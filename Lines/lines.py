@@ -1,5 +1,4 @@
 import sys
-import os
 
 count=0
 if len(sys.argv) != 2:
@@ -14,14 +13,22 @@ except FileNotFoundError:
     sys.exit("File not found")
 with open(sys.argv[1]) as file:
     for line in file:
-        if line[0]==" ":
-            line=line.lstrip()
-        if line.isspace():
-            pass
-        elif line[0]=="#":
+        if line[0]=="\n":
             pass
         else:
-            count=count+1
 
+            if line[0]==" ":
+                line=line.lstrip()
+            try:
+                if line=="\n":
+                    pass
+                elif line.isspace():
+                    pass
+                elif line[0]=="#":
+                    pass
+                else:
+                    count=count+1
+            except IndexError:
+                pass
 print(count)
 # Insert code here to read all lines, excluding any that start with # or are blank
