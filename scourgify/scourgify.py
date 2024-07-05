@@ -19,8 +19,14 @@ try:
 except FileNotFoundError:
     sys.exit(f"Could not read {argument1}")
 
+
+
 with open(argument1, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
-    for row in reader:
-        lastName,firstName=(row['name']).split(",")
-        print(firstName,lastName, row['house'])
+    with open(argument2, 'w', newline='') as file:
+        writer=csv.writer(file)
+        field=['firstName','lastName','house']
+        writer.writerow(field)
+        for row in reader:
+            lastName,firstName=(row['name']).split(",")
+            writer.writerow([firstName,lastName, row['house']])
