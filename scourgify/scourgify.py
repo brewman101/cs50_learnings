@@ -25,8 +25,9 @@ with open(argument1, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     with open(argument2, 'w', newline='') as file:
         writer=csv.writer(file)
-        field=['firstName','lastName','house']
+        field=['first','last','house']
         writer.writerow(field)
         for row in reader:
             lastName,firstName=(row['name']).split(",")
+            firstName=firstName[1:]
             writer.writerow([firstName,lastName, row['house']])
