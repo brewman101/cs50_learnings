@@ -7,7 +7,19 @@ input="10:00 AM to 10:00 PM"
 
 # Check that it meets correct formatting
 # XX:XX AM to XX:XX PM
-print(re.search(r"[0-9]+:[0-9]+ AM to [0-9]+:[0-9]+ PM", input))
+times=(re.search(r"([0-9]+):([0-9]+) ([A|P][M]) to ([0-9]+):([0-9]+) ([A|P][M])",input))
+if times:
+
+    if times.group(2)>59:
+        raise ValueError
+    if times.group(5)>59:
+        raise ValueError
+    
+    
+
+else:
+    raise ValueError
+
 
 
 # Split into two strings
