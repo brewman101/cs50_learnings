@@ -10,17 +10,22 @@ input="10:00 AM to 10:00 PM"
 times=(re.search(r"([0-9]+):([0-9]+) ([A|P][M]) to ([0-9]+):([0-9]+) ([A|P][M])",input))
 if times:
 
-    if times.group(2)>59:
+    if int(times.group(2))>59:
         raise ValueError
-    if times.group(5)>59:
+    if int(times.group(5))>59:
         raise ValueError
-    
-    
+    if times.group(3)=="PM":
+        a=int(times.group(1))+12
+    else:
+        a=int(times.group(1))
+    if times.group(6)=="PM":
+        c=int(times.group(4))+12
+    else:
+        c=int(times.group(4))
+ 
 
 else:
     raise ValueError
 
 
-
-# Split into two strings
-# a,b=string1.split(" to ")
+print(f"{a}:{times.group(2)} to {c}:{times.group(5)}")
