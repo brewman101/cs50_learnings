@@ -2,12 +2,12 @@ import re
 import sys
 
 # Capture hours
-input="10:00 AM to 10:00 PM"
-#input("Hours: ")
+#input="10:00 AM to 10:00 PM"
+amount=input("Hours: ")
 
 # Check that it meets correct formatting
 # XX:XX AM to XX:XX PM
-times=(re.search(r"([0-9]+):([0-9]+) ([A|P][M]) to ([0-9]+):([0-9]+) ([A|P][M])",input))
+times=(re.search(r"([0-9]+):([0-9]+) ([A|P][M]) to ([0-9]+):([0-9]+) ([A|P][M])",amount))
 if times:
 
     if int(times.group(2))>59:
@@ -22,10 +22,11 @@ if times:
         c=int(times.group(4))+12
     else:
         c=int(times.group(4))
- 
+
 
 else:
     raise ValueError
 
 
-print(f"{a}:{times.group(2)} to {c}:{times.group(5)}")
+print(f"{a:02d}:{times.group(2)} to {c:02d}:{times.group(5)}")
+
