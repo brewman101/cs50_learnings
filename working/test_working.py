@@ -1,4 +1,5 @@
 import working
+import pytest
 
 def test_convert1():
     assert working.convert("9 AM to 5 PM")=="09:00 to 17:00"
@@ -9,6 +10,8 @@ def test_convert3():
 def test_convert4():
     assert working.convert("10:30 PM to 8 AM")=="22:30 to 08:00"
 def test_convert5():
-    assert working.convert("09:00 AM - 17:00 PM")==ValueError
-
+    with pytest.raises(ValueError):
+        working.convert("12:70 AM to 12:70 PM")
+    with pytest.raises(ValueError):
+        working.convert("12 AM  12 PM")
 

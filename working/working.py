@@ -33,6 +33,10 @@ def convert(s):
             a=a+12
         if h=="PM" and e!=12:
             e=e+12
+        if a==12 and d=="AM":
+            a=0
+        if e==12 and h=="AM":
+            e=0
         s=(f"{a:02d}:{c:02d} to {e:02d}:{g:02d}")
         return s
     else:
