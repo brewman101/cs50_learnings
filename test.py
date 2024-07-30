@@ -1,23 +1,40 @@
-# def Find(string):
-#     x=string.split()
-#     res=[]
-#     for i in x:
-#         if i.startswith("https://www.youtube.com"):
-#             res.append(i)
-#     return res
-             
-# # Driver Code
-# string = '<iframe width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-# print("Urls: ", Find(string))
-
-import re
 import sys
+import emoji
+cookie=emoji.emojize(':cookie:')
 
-# Capture hours
-amount="5 AM to 10 PM"
-#amount=input("Hours: ")
 
-# Check that it meets correct formatting
-# XX:XX AM to XX:XX PM
-times=(re.search(r"([0-9]+)(:)?([0-9]+)? ([A|P][M]) to ([0-9]+)(:)?([0-9]+)? ([A|P][M])",amount))
-print(times.group(8))
+
+class Jar:
+    def __init__(self, capacity=12):
+        if capacity<0:
+            sys.exit(ValueError)
+        self.capacity=capacity
+        self.size=0
+
+    def __str__(self):
+        return f"{self.size * cookie}"
+    
+    def deposit(self, n):
+        if n + self.size > self.capacity:
+            sys.exit(ValueError)
+        self.size=self.size + n
+      
+    def withdraw(self, n):
+        if n - self.size < 0:
+            sys.exit(ValueError)
+        self.size=self.size-n
+
+"""
+    @property
+    def capacity(self):
+        pass
+
+    @property
+    def size(self):
+        pass
+"""
+
+jar=Jar()
+jar.deposit(4)
+jar.withdraw(1)
+print(jar)

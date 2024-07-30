@@ -1,26 +1,41 @@
+import sys
 import emoji
 cookie=emoji.emojize(':cookie:')
 
 
+
 class Jar:
     def __init__(self, capacity=12):
-        self.capacity=capacity
-
+        if capacity<0:
+            sys.exit(ValueError)
+        self._capacity=capacity
+        self._size=0
 
     def __str__(self):
-        return f"{cookie}"
-
+        return f"{self.size * cookie}"
+    
     def deposit(self, n):
-        cookieTotal=+n
-
+        if n + self.size > self.capacity:
+            sys.exit(ValueError)
+        self._size=self._size + n
+      
     def withdraw(self, n):
-        cookieTotal=-n
+        if self._size - n < 0:
+            sys.exit(ValueError)
+        self._size=self._size-n
+
 
     @property
     def capacity(self):
-        pass
+        return self._capacity
 
     @property
     def size(self):
-        pass
+        return self._size
+"""
+"""
 
+jar=Jar()
+jar.deposit(4)
+jar.withdraw(1)
+print(jar)
