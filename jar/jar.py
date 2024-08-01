@@ -32,10 +32,3 @@ class Jar:
     @property
     def size(self):
         return self._size
-"""
-"""
-
-jar=Jar()
-jar.deposit(4)
-jar.withdraw(1)
-print(jar)
