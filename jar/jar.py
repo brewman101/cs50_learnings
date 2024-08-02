@@ -17,12 +17,12 @@ class Jar:
     def deposit(self, n):
         if n + self.size > self.capacity:
             sys.exit(ValueError)
-        self._size=self._size + n
+        self._size=self.size + n
       
     def withdraw(self, n):
         if self._size - n < 0:
             sys.exit(ValueError)
-        self._size=self._size-n
+        self._size=self.size-n
 
 
     @property
@@ -32,3 +32,8 @@ class Jar:
     @property
     def size(self):
         return self._size
+
+
+jar=Jar()
+jar.deposit(1)
+print(jar)
